@@ -4,31 +4,48 @@ import { createContext, ReactNode, useState } from "react";
 
 type HomeContextData = {
     contador: number;
+    playing: boolean;
+    playing_texto: string;
     incremento: () => void;
+    togglePlaying: () => void;
 }
 
 export const HomeContext = createContext({} as HomeContextData);
 
 type ProviderProps = {
-    children : ReactNode;
+    children: ReactNode;
 }
 
-const HomeContextProvider = ({children}:ProviderProps) => {
+const HomeContextProvider = ({ children }: ProviderProps) => {
     const [contador, setContador] = useState(0);
+    const [playing, setPlaying] = useState(false);
 
-    const incremento = () =>{
+
+    const incremento = () => {
         setContador(contador + 1);
     }
-    return(
+
+
+    const togglePlaying = () => {
+        setPlaying(!playing);
+    };
+
+    const playing_texto = playing ? "Tocando" : "Pausado";
+
+
+    return (
         <HomeContext.Provider value={
             {
                 contador,
-                incremento
+                playing,
+                playing_texto,
+                incremento,
+                togglePlaying,
             }
         }>
             {children}
         </HomeContext.Provider>
     )
-} 
+}
 
 export default HomeContextProvider;
