@@ -23,7 +23,7 @@ const HomeContextProvider = ({ children }: ProviderProps) => {
 
     const incremento = () => {
         setContador(contador + 1);
-    }
+    };
 
 
     const togglePlaying = () => {

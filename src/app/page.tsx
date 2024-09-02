@@ -1,6 +1,6 @@
 'use client'
 import { useContext } from "react";
-import { Fa6, FaCirclePlus } from "react-icons/fa6";
+//import { Fa6, FaCirclePlus } from "react-icons/fa6";
 import { IoPlayCircle, IoPauseCircle } from "react-icons/io5";
 import { HomeContext } from "./context/Homecontext";
 
