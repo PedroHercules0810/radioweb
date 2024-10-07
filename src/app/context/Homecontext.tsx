@@ -16,12 +16,13 @@ type HomeContextData = {
     handlePreviousMusic: () => void;
     handleNextMusic: () => void;
     configPlayPause: () => void;
+    configMuted: () => void;
     configAudio: () => void;
+    formatTime: (seconds: number) => string;
     configAudioIndex: (index:number) => void;
     configVolume: (valeu: number) => void;
     configPanner: (value: number) => void;
     configCurrentTime: (value: number) => void;
-    configMuted: () => void;
 }
 
 export const HomeContext = createContext({} as HomeContextData);
@@ -70,6 +71,15 @@ const HomeContextProvider = ({children}:ProviderProps) => {
         audio.currentTime = value;
         setCurrentTime(value);
     }
+
+    const formatTime = (seconds:number) => {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+      
+        return `${minutes}:${remainingSeconds.toString().padStart(2,   
+       '0')}`;   
+      
+      }
 
     const configAudio = () => {
         configAudioIndex(0);
@@ -164,7 +174,8 @@ const HomeContextProvider = ({children}:ProviderProps) => {
                 configCurrentTime,
                 configMuted,
                 handleNextMusic,
-                handlePreviousMusic
+                handlePreviousMusic,
+                formatTime
             }
         }>
           {children} 

@@ -7,17 +7,6 @@ import { musics } from "./dados/music";
 import { FaVolumeOff, FaVolumeUp } from "react-icons/fa";
 import { GiNextButton, GiPreviousButton } from "react-icons/gi"
 
-const formatTime = (seconds:number) => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
-
-  return `${minutes}:${remainingSeconds.toString().padStart(2,   
- '0')}`;   
-
-}
-
-
-
 export default function Home() {
   const { 
     playing,
@@ -35,7 +24,8 @@ export default function Home() {
     configCurrentTime,
     configMuted,
     handleNextMusic,
-    handlePreviousMusic
+    handlePreviousMusic,
+    formatTime
   } = useContext(HomeContext);
 
     useEffect(()=>{
@@ -58,7 +48,7 @@ export default function Home() {
       />
 
          <div className="items-center justify-between">
-        <button onClick={()=> handleNextMusic()}>
+        <button onClick={()=> handlePreviousMusic()}>
           { (<GiPreviousButton className="text-[50px] text-red-600" />)}
          </button>
          <button onClick={()=> configMuted()}>
