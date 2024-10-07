@@ -8,24 +8,24 @@ type Music = {
 
 export const musics: Music[] = [
     {
-        nome: "Maitake",
-        author: "Vtuber",
-        description: "GURUGURU GURUGURU",
-        urlAudio: "audios/Maitake.mp3",
-        image: "Imagem da Música"
-    },
-    {
         nome: "Fear of the Dark",
         author: "Iron Maiden",
         description: "FEAR OF THE DARK",
-        urlAudio: "audios/Fear of the Dark .mp3",
-        image: "Imagem da Música"
+        urlAudio: "audios/audio2.mp3",
+        image: "../../images/fear.jpeg"
+    },
+    {
+        nome: "Maitake",
+        author: "Vtuber",
+        description: "GURUGURU GURUGURU",
+        urlAudio: "audios/audio 1.mp3",
+        image: "../../images/guru.jpg"
     },
     {
         nome: "Numb",
         author: "Linkin Park",
-        description: "I",
-        urlAudio: "audios/Numb.mp3",
-        image: "Imagem da Música"
+        description: "Numb - LIVE",
+        urlAudio: "audios/audio3.mp3",
+        image: "../../images/numb.jpeg"
     }
 ]
