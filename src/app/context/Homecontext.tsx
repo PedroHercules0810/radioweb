@@ -13,6 +13,8 @@ type HomeContextData = {
     currentTime: number;
     totalTime: number;
     muted: boolean;
+    handlePreviousMusic: () => void;
+    handleNextMusic: () => void;
     configPlayPause: () => void;
     configAudio: () => void;
     configAudioIndex: (index:number) => void;
@@ -61,6 +63,7 @@ const HomeContextProvider = ({children}:ProviderProps) => {
         }
     }, [audio]);
  
+    
 
     const configCurrentTime = (value: number) => {
         if (!audio) return;
@@ -94,6 +97,16 @@ const HomeContextProvider = ({children}:ProviderProps) => {
         setGain(updatedGain);
         setStereo(updatedStereo);
     }
+
+    const handleNextMusic = () => {
+        configAudioIndex(audioIndex + 1); // Pass to the next track
+      };
+      
+      const handlePreviousMusic = () => {
+        // Handle previous track logic (e.g., circular wrapping)
+        const prevIndex = (audioIndex - 1 + musics.length) % musics.length;
+        configAudioIndex(prevIndex); // Return to the previous track
+      };
 
     const configVolume = (value:number) => {
         if (!gain) return;
@@ -149,7 +162,9 @@ const HomeContextProvider = ({children}:ProviderProps) => {
                 configVolume,
                 configPanner,
                 configCurrentTime,
-                configMuted
+                configMuted,
+                handleNextMusic,
+                handlePreviousMusic
             }
         }>
           {children} 

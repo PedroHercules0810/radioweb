@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { ImPlay3, ImPause2 } from "react-icons/im";
 import { musics } from "./dados/music";
 import { FaVolumeOff, FaVolumeUp } from "react-icons/fa";
+import { GiNextButton, GiPreviousButton } from "react-icons/gi"
 
 const formatTime = (seconds:number) => {
   const minutes = Math.floor(seconds / 60);
@@ -32,7 +33,9 @@ export default function Home() {
     configVolume,
     configPanner,
     configCurrentTime,
-    configMuted
+    configMuted,
+    handleNextMusic,
+    handlePreviousMusic
   } = useContext(HomeContext);
 
     useEffect(()=>{
@@ -41,10 +44,11 @@ export default function Home() {
 
 
     return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-slate-200"></div>
          <h1>{playing}</h1>
-         <h1>{musics[audioIndex].description}</h1>
+         <h1 className="italic">{musics[audioIndex].author}</h1>
+         <h1 className="italic">{musics[audioIndex].nome}</h1>
          <img
         src={musics[audioIndex].image} 
         alt={musics[audioIndex].description} 
@@ -53,8 +57,10 @@ export default function Home() {
         className="object-cover rounded-lg" 
       />
 
-         
          <div className="items-center justify-between">
+        <button onClick={()=> handleNextMusic()}>
+          { (<GiPreviousButton className="text-[50px] text-red-600" />)}
+         </button>
          <button onClick={()=> configMuted()}>
              {
               (muted) ? 
@@ -69,6 +75,10 @@ export default function Home() {
                (<ImPause2 className="text-[50px]" />) : 
                (<ImPlay3 className="text-[50px]"/>)
              }
+         </button>
+
+         <button onClick={()=> handleNextMusic()}>
+          { (<GiNextButton className="text-[50px] text-red-600" />)}
          </button>
           </div>
 
@@ -109,10 +119,9 @@ export default function Home() {
                 {
                   musics.map((music, index) => {
                     return (
-                      <div key={index} onClick={(e) => configAudioIndex(index)} className="items-center justify-between text-[20px]">
-                        <h1>
-                            {music.author}
-                        </h1>
+                      <div key={index} onClick={(e) => configAudioIndex(index)} className="items-center justify-center text-[20px]">
+                        <h1 className="grid place-items-center text-[20px] italic">{music.nome}</h1>
+                        <h1 className="grid place-items-center text-[10px] italic">{music.description}</h1>
                       </div>
                     )
                   })

@@ -22,10 +22,10 @@ export const musics: Music[] = [
         image: "../../images/guru.jpg"
     },
     {
-        nome: "Numb",
+        nome: "The Emptiness Machine",
         author: "Linkin Park",
-        description: "Numb - LIVE",
+        description: "Your blade is sharp with precision",
         urlAudio: "audios/audio3.mp3",
-        image: "../../images/numb.jpeg"
+        image: "../../images/machine.jpg"
     }
 ]
