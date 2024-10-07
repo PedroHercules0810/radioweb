@@ -47,9 +47,9 @@ export default function Home() {
         className="object-cover rounded-lg" 
       />
 
-         <div className="items-center justify-between">
+        <div className="items-center justify-between bg-gradient-to-r from-fuchsia-300 to-indigo-600 rounded-full">
         <button onClick={()=> handlePreviousMusic()}>
-          { (<GiPreviousButton className="text-[50px] text-red-600" />)}
+          { (<GiPreviousButton className="text-[50px] items-center" />)}
          </button>
          <button onClick={()=> configMuted()}>
              {
@@ -68,13 +68,13 @@ export default function Home() {
          </button>
 
          <button onClick={()=> handleNextMusic()}>
-          { (<GiNextButton className="text-[50px] text-red-600" />)}
+          { (<GiNextButton className="text-[50px] items-center" />)}
          </button>
           </div>
 
              <div className="items-center justify-between">
               <div>
-                <h1 className="">Volume</h1>
+                <h1 className="grid place-items-center italic">Volume</h1>
                 <input
                   type="range"
                   min={0}
@@ -85,7 +85,7 @@ export default function Home() {
                 />
                 </div>
                 <div>
-                  <h1 className="items-center justify-between">Balanço</h1>
+                  <h1 className="grid place-items-center italic">Balanço</h1>
               <input 
                   type="range" 
                   min="-1" 
@@ -95,7 +95,7 @@ export default function Home() {
                   step="0.01" 
                 />
                 </div>
-              <h1>{formatTime(currentTime)}</h1>
+              <h1 className="grid place-items-center italic">{formatTime(currentTime)}</h1>
                 <input 
                   type="range"
                   min="0"
